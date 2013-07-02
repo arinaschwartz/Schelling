@@ -1,0 +1,183 @@
+CS121 A'11
+HW2: Schelling Model of Housing Segregation
+
+Anne Rogers
+October 2011
+
+Here is a description of how to use the different test programs.
+Remember: you must compile a program before you can run it.
+
+We have provided testing code for the required DoSimulation function
+and the for the functions used in our implementation.  Since not
+everyone will choose to implement this problem using our solution, we
+will describe the code for testing DoSimulation first.  We *strongly*
+encourage you to test your function individually as you write them.
+
+TESTING DO SIMULATION:
+
+The program TestDoSimulation calls your DoSimulation function with a
+variety of small and large grids and checks the output against the
+expected output.  It will generate success or failure messages for
+each test grid.
+
+The input and expected output grids are stored in files in the test
+sub-directory.  The grid file format is described at the end of this
+file.
+
+Here is a list of the moves expected for each small test case:
+
+input:test/t3.txt
+threshold:2
+expected output:test/t3-final-2.txt
+   expected moves:      
+      (0, 2) => (0, 0)
+      (1, 3) => (1, 1)
+      (2, 3) => (3, 3)
+   This simulation ran: 1 step
+
+input:test/t2.txt 
+threshold: 2
+expected output:test/t2-final-2.txt
+   expected moves:      
+      (0, 2) => (0, 0)
+      (1, 3) => (1, 1)
+
+     (1,2) starts the step being unsatisfied, but does not move.
+
+   This simulation ran: 1 step
+
+input:test/t4.txt 
+threshold:2
+expected output:test/t4-final-2.txt
+   expected moves:      
+      (0, 2) => (0, 0)
+      (0, 4) => (1, 1)
+      (1, 3) => (2, 2)
+      (1, 4) => (0, 2)
+      (2, 3) => (3, 3)
+
+   (1,4) starts the first step being satisfied, but becomes unsatisfied
+   during the step.  It should not move until the second step.
+
+   This simulation takes 3 steps.
+
+input:test/t5.txt
+threshold:2
+expected output:test/t5-final-2.txt
+   This simulation does not converge.  It runs for 1000 steps.
+
+TestDoSimulation also runs your function on a large grid
+(test/t-150-45-45.txt) with three different thresholds.
+
+========================
+
+TESTING AUXILIARY FUNCTIONS:
+
+The remaining test programs test the functions used in our
+implementation.  You may find it helpful to look at the code in the
+main function of each program.  Ignore the other functions.
+
+Here are descriptions of the purpose of each test and of how to run
+each test.  The first batch of programs does not take any input.
+
+java TestIsSatisfied
+  This test runs Schelling.isSatisfied on test/t0.txt.
+
+java TestCountNumOpen
+  This test runs Schelling.countNumOpen on test/t0.txt, test/t1.txt, and test/t5.txt
+
+java TestIdentifyUnsatisfied
+  This test runs Schelling.IdentifyUnSatisfied on test/t1.txt
+
+java TestMoveToRandomOpen
+  This test makes several calls to Schelling.TestMoveToRandomOpen
+  using the grid in test/t1.txt
+
+java TestMoveToOpen
+  This test runs Schelling.TestMoveToOpen on test/t1.txt
+
+java TestMoveToRandomOpen
+  This test makes several calls to Schelling.TestMoveToOpen
+  using the grid in test/t1.txt
+
+
+The program TestDoOneStep calls your DoOneStep function on a variety
+of input grids and thresholds and matches the results against the
+expected results.  It generates success or failure messages for each
+test as appropriate.
+
+NOTE: This program assumes you have a function Schelling.countNumOpen.
+
+java TestDoOneStep
+usage: java TestDoOneStep
+
+input: test/t6.txt 
+threshold: 3
+expected output: test/t6-1-3.txt 
+   expected moves: (3, 3) => (0, 2)    
+
+input: test/t2.txt
+threshold: 2
+expected output: test/t2-1-2.txt
+   expected moves:      
+     (0,2) => (0,0)
+     (1,3) => (1,1)
+
+     (1,2) starts the step being unsatisfied, but does not move.
+
+input: test/t3.txt
+threshold: 2
+expected output: test/t3-1-2.txt
+   expected moves:      
+      (0, 2) => (0, 0)
+      (1, 3) => (1, 1)
+      (2, 3) => (3, 3)
+
+
+input: test/t4.txt
+threshold: 2
+expected output: test/t4-1-2.txt
+   expected moves:      
+      (0, 2) => (0, 0)
+      (0, 4) => (1, 1)
+      (1, 3) => (2, 2)
+   
+   (1,4) starts the step being satisfied, but becomes unsatisfied
+   during the step.  It should not move.
+
+input: test/t5.txt
+threshold: 2
+expected output: test/t5-1-2.txt
+   expected moves:      
+     (1, 3) => (1, 0)
+     (4, 4) => (0, 1)   <= this move was a random move to open location 0
+
+
+========================
+
+FILE FORMAT:
+
+The grid file format is very simple.  The first line contains the
+number of rows and columns in the grid (N).  The next N lines contain
+data for each row.  And finally, the file may contain a seed to use
+for the random number generator.  Our code will automatically set the
+seed, if necessary.  For example, the file test/t0.txt contains:
+
+    4
+    O B B O 
+    B O R R 
+    R R O O 
+    O R R O 
+    1315497269218
+
+where R means red, B means blue, and O means open and the long number
+in the last line is a seed for the random number generator.  You can
+look at a test file using the command (more) or using our DrawGrid
+class, which will pop-up a window and draw a picture of the grid (java
+DrawGrid test/t0.txt, for example).
+
+
+
+
+
+

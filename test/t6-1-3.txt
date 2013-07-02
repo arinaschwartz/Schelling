@@ -1,0 +1,6 @@
+4
+R R R O 
+R R R O 
+R R O O 
+O O O O 
+1315497269222

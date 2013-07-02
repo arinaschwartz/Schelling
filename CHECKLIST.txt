@@ -1,0 +1,33 @@
+Have you put your name(s) at the top of the file Schelling.java?
+
+Does your code determine whether a homeowner is satisfied work
+properly.  Are you counting his matching neighbors properly for both
+interior and boundary homes? Does it work for different combinations
+of matching, open, and non-matching neighbors.
+
+Does it determine the number of open spots properly?  Does it examine
+all the locations in the grid?
+
+Does it determine all the homeowners who are unsatisfied at the start
+of a step?
+
+Does it move unsatisfied homeowners to the first open home that is
+acceptable?
+
+Does it handle the fall back case where there are no acceptable homes
+for a homeowner?  Does it choose a random open spot properly?
+
+Does it handle the case where a homeowner starts a step being
+unsatisfied, but becomes satisfied before it is time to move?  That
+is, do such homeowners stay at their current locations?
+
+Does it leave homeowners who start a step being satisfied, but become
+unsatisfied in place until the next step?
+
+Does your program stop as soon as all the homeowners are satisfied?  
+
+Does it work properly when given a grid that will never converge?
+
+
+
+

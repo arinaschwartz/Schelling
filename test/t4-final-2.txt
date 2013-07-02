@@ -1,0 +1,7 @@
+5
+B B B O O 
+B B R O O 
+R R R O O 
+O R R B B 
+O O O B B 
+1315497269218
